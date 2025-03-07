@@ -4,11 +4,12 @@ import { TitleComponent } from '../../../shared/components/title/title.component
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../../../core/service/user.service';
+import { SpinnerComponent } from "../../../shared/components/spinner/spinner.component";
 
 @Component({
   selector: 'app-create-user',
   standalone: true,
-  imports: [ButtonComponent, TitleComponent, ReactiveFormsModule],
+  imports: [ButtonComponent, TitleComponent, ReactiveFormsModule, SpinnerComponent],
   templateUrl: './createUser.component.html',
   styleUrl: './createUser.component.css'
 })
@@ -39,7 +40,7 @@ export class CreateUserComponent {
     ),
     phone: new FormControl(
       '',
-      [Validators.required, Validators.pattern('^[0-9]{10}')]
+      [Validators.required, Validators.pattern('^[0-9]{8}')]
     ),
     address: new FormControl(
       '',
@@ -51,7 +52,7 @@ export class CreateUserComponent {
     ),
     photo: new FormControl(
       '',
-      [Validators.required]
+      []
     ),
     user_type: new FormControl(
       '',
@@ -76,9 +77,8 @@ export class CreateUserComponent {
     this.selectedFile = event?.target.files[0] as File;
   }
 
-  saveUser(): void {
+  saveUser(): void {console.log('function saveUser');
     this.valuesUserForm = this.createUserForm.value;
-    console.log( this.valuesUserForm );
     //Verificamos si los campos fueron validados correctamente
     if( this.createUserForm.valid ){
       //Activamos el indicador de carga
