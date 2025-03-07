@@ -1,3 +1,4 @@
+<app-spinner [isLoading]="isLoading" />
 <section>
   <app-title [tittleName]="'Nuevo Usuario'" />
 </section>
@@ -102,10 +103,10 @@
           <label class="block text-sm font-medium text-gray-700" for="user_type">Tipo de usuario</label>
           <select id="user_type" formControlName="user_type">
             <option value="">--Seleccione--</option>
-            <option value="admin">Administrador</option>
-            <option value="farma">Farmacéutico</option>
-            <option value="cajero">Cajero</option>
-            <option value="alma">Almacenista</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Farmacéutico">Farmacéutico</option>
+            <option value="Cajero">Cajero</option>
+            <option value="Almacenista">Almacenista</option>
           </select>
           @if( createUserForm.get('user_type')?.invalid && createUserForm.get('user_type')?.touched ){
             @if(createUserForm.get('user_type')?.hasError('required')){
